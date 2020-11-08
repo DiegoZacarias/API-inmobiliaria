@@ -29,5 +29,7 @@ class ProductoTest extends TestCase
         $this->withoutExceptionHandling();
         $response = $this->json('POST', route('productos.store'),$fields);
         $response->assertStatus(201);
+
+        $this->assertDatabaseHas('productos',['nombre' => 'Producto 1']);
     }
 }
