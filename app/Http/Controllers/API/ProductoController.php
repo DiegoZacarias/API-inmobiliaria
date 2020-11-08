@@ -33,11 +33,15 @@ class ProductoController extends Controller
         $request->validate([
             'nombre' => 'required',
             'imagen' => 'nullable|file|image|mimetypes:image/jpeg,image/png,image/jpg',
+            'direccion' => 'required',
+            'banos' => 'required|integer',
+            'habitaciones' => 'required|integer',
+            'estacionamiento' => 'required|integer',
             'categoria_id' => 'required|exists:categorias,id',
             'negocio_id' => 'required|exists:negocios,id'
         ]);
 
-        $producto = Producto::create($request->only('nombre','descripcion','categoria_id','negocio_id'));
+        $producto = Producto::create($request->only('nombre','descripcion','direccion','banos','habitaciones','estacionamiento','categoria_id','negocio_id'));
     
 
         # Agregamos la imagen si la recibimos

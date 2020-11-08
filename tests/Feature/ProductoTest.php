@@ -22,6 +22,10 @@ class ProductoTest extends TestCase
         $fields = [
             'nombre' => 'Producto 1',
             'descripcion' => 'descripcion',
+            'direccion' => 'Avda Inmueble 9999',
+            'banos' => 2,
+            'habitaciones' => 3,
+            'estacionamiento' => 1,
             'imagen' => UploadedFile::fake()->create('test.png', $kilobytes = 0), 
             'categoria_id' => $categoria->id,
             'negocio_id' => $negocio->id

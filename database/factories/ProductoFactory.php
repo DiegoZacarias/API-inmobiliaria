@@ -12,6 +12,10 @@ $factory->define(Producto::class, function (Faker $faker) {
 	$negocio = factory(Negocio::class)->create();
     return [
     		'nombre' => $faker->name,
+    		'direccion' => $faker->address,
+    		'banos' => $faker->numberBetween($min = 1, $max = 5),
+    		'habitaciones' => $faker->numberBetween($min = 1, $max = 5),
+    		'estacionamiento' => $faker->numberBetween($min = 1, $max = 5),
         'categoria_id' => $categoria->id,
         'negocio_id' => $negocio->id
     ];

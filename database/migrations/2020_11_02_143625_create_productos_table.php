@@ -17,6 +17,10 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->text('descripcion')->nullable();
+            $table->string('direccion');
+            $table->string('banos')->default('0');
+            $table->string('habitaciones')->default('0');
+            $table->string('estacionamiento')->default('0');
             $table->string('imagen')->nullable();
             $table->bigInteger('categoria_id')->unsigned();
             $table->bigInteger('negocio_id')->unsigned();
