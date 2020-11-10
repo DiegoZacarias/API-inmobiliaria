@@ -19,7 +19,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json($this->productos->all());
     }
 
     /**
@@ -71,9 +71,15 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Producto $producto)
     {
-        //
+        $request->validate([
+            'nombre' => 'required'
+        ]);
+
+        $producto->update($request->all());
+
+        return response()->json(['Exito' => 'Actualizado correctamente'], 200);
     }
 
     /**
@@ -82,9 +88,10 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Producto $producto)
     {
-        //
+        $producto->delete();
+        return response()->json(['Exito' => 'Producto eliminado con exito'], 204);
     }
 
     protected function storeImagenPrincipal($request, $producto)
