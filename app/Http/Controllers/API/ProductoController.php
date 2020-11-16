@@ -94,7 +94,7 @@ class ProductoController extends Controller
         return response()->json(['Exito' => 'Producto eliminado con exito'], 204);
     }
 
-    protected function storeImagenPrincipal($request, $producto)
+    private function storeImagenPrincipal($request, $producto)
     {
         $image_name = str_slug($producto->id).'_principal.' . $request->file('imagen')->getClientOriginalExtension();
         $producto->update([
