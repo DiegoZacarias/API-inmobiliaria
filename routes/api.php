@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
-Route::apiResource('productos',[ProductoController::class]);
-Route::apiResource('categorias',[CategoriaController::class]);
+Route::apiResource('productos', ProductoController::class);
+Route::apiResource('categorias',CategoriaController::class);
