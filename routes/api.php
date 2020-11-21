@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\CategoriaController;
+use App\Http\Controllers\API\ProductoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('productos','API\ProductoController');
-Route::apiResource('categorias','API\CategoriaController');
+
+Route::apiResource('productos',[ProductoController::class]);
+Route::apiResource('categorias',[CategoriaController::class]);
