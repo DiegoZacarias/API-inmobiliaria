@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Panel;
 
 use App\Categoria;
 use Illuminate\Foundation\Testing\RefreshDatabase;

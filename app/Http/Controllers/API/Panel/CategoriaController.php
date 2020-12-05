@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Panel;
 
 use App\Categoria;
 use App\Http\Controllers\Controller;

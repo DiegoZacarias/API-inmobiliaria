@@ -1,10 +1,10 @@
 <?php
 
 
-use App\Http\Controllers\API\CategoriaController;
+use App\Http\Controllers\API\Panel\CategoriaController;
 use App\Http\Controllers\API\Front\ProductoController as FrontProductoController;
-use App\Http\Controllers\API\NegocioController;
-use App\Http\Controllers\API\ProductoController;
+use App\Http\Controllers\API\Panel\NegocioController;
+use App\Http\Controllers\API\Panel\ProductoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
