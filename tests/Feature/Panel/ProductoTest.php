@@ -68,9 +68,10 @@ class ProductoTest extends TestCase
     }
 
     /** @test */
-    public function se_pueden_listar_los_productos()
+    public function se_pueden_listar_todos_los_productos()
     {
-            $productos = factory(Producto::class,2)->create();
+            $productos = factory(Producto::class,2)->create(['visible' => true]);
+            // $productosNoVisibles = factory(Producto::class,3)->create(['visible' => false]);
 
             $response = $this->json('GET',route('productos.index'));
             $response->assertStatus(200)
@@ -91,6 +92,7 @@ class ProductoTest extends TestCase
                               'banos' => $productos[1]->banos,
                               'habitaciones' => $productos[1]->habitaciones
                         ]
-                    ]);
+                    ])
+                    /*->assertJsonCount(2, $key = null)*/;
     }
 }

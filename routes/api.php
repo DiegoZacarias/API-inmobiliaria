@@ -1,6 +1,9 @@
 <?php
 
+
 use App\Http\Controllers\API\CategoriaController;
+use App\Http\Controllers\API\Front\ProductoController as FrontProductoController;
+use App\Http\Controllers\API\NegocioController;
 use App\Http\Controllers\API\ProductoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,11 +18,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// FRONT
+Route::get('productos/listar', [FrontProductoController::class, 'listarProductosVisibles'])->name('front.productos.listar');
+// FIN FRONT
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-
+// PANEL
 Route::apiResource('productos', ProductoController::class);
 Route::apiResource('categorias',CategoriaController::class);
+Route::apiResource('negocios', NegocioController::class);
+// FIN PANEL
+// 

@@ -59,4 +59,23 @@ class CategoriaTest extends TestCase
         $this->assertDatabaseMissing('categorias',['nombre' => $categoria->nombre]);
         $this->assertDatabaseHas('categorias',['nombre' => 'Categoria editada']);
     }
+
+    /** @test */
+    public function se_pueden_listar_categorias()
+    {
+            $categorias = factory(Categoria::class,2)->create();
+
+            $response = $this->json('GET', route('categorias.index'));
+            $response->assertStatus(200)
+                    ->assertJson([
+                        [
+                            'nombre' => $categorias[0]->nombre,
+                            'descripcion' => $categorias[0]->descripcion
+                        ],
+                        [
+                            'nombre' => $categorias[1]->nombre,
+                            'descripcion' => $categorias[1]->descripcion
+                        ]
+                    ]);
+    }
 }

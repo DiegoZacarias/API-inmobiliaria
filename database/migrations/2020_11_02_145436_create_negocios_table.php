@@ -15,6 +15,8 @@ class CreateNegociosTable extends Migration
     {
         Schema::create('negocios', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->text('descripcion')->nullable();
             $table->timestamps();
         });
     }
