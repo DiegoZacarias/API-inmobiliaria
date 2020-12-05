@@ -87,17 +87,8 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Inmobiliaria API
-                </div>
-
-                <div class="links">
-                    <a href="#">Instalación</a>
-                    <a href="#">Documentación</a>
-                    <a href="#">URLS</a>
-                </div>
-            </div>
+            @yield('content')
+            
         </div>
     </body>
 </html>
