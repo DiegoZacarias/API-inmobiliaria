@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Route::get('/instalacion', function () {
     return view('instalacion');
 })->name('instalacion');
+
+Route::get('/routes', [FrontController::class, 'getRouteCollection'])->name('routes');
