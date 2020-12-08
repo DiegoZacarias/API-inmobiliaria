@@ -26,12 +26,6 @@
 		
 </template>
 
-<!-- script>
-	
-	export default {};
-
-</script> -->
-
 <script>
   export default {
     data () {
@@ -56,7 +50,6 @@
     	getProductos(){
     		 axios.get("api/productos")
     		  .then((response)=> {
-    		  						console.log('PARA EL BACKEND');
                       console.log(response.data); 
                       this.productos = response.data;   
                   });
