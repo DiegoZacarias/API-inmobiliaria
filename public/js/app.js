@@ -2154,28 +2154,25 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       dialogDelete: false,
       headers: [{
-        text: 'Dessert (100g serving)',
+        text: 'Nombre',
         align: 'start',
         sortable: false,
-        value: 'name'
+        value: 'nombre'
       }, {
-        text: 'Calories',
-        value: 'calories'
+        text: 'Direccion',
+        value: 'direccion'
       }, {
-        text: 'Fat (g)',
-        value: 'fat'
+        text: 'Visible',
+        value: 'visible'
       }, {
-        text: 'Carbs (g)',
-        value: 'carbs'
-      }, {
-        text: 'Protein (g)',
-        value: 'protein'
+        text: 'Banos',
+        value: 'banos'
       }, {
         text: 'Actions',
         value: 'actions',
         sortable: false
       }],
-      desserts: [],
+      productos: [],
       editedIndex: -1,
       editedItem: {
         name: '',
@@ -2211,67 +2208,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     initialize: function initialize() {
-      this.desserts = [{
-        name: 'Frozen Yogurt',
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0
-      }, {
-        name: 'Ice cream sandwich',
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3
-      }, {
-        name: 'Eclair',
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0
-      }, {
-        name: 'Cupcake',
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3
-      }, {
-        name: 'Gingerbread',
-        calories: 356,
-        fat: 16.0,
-        carbs: 49,
-        protein: 3.9
-      }, {
-        name: 'Jelly bean',
-        calories: 375,
-        fat: 0.0,
-        carbs: 94,
-        protein: 0.0
-      }, {
-        name: 'Lollipop',
-        calories: 392,
-        fat: 0.2,
-        carbs: 98,
-        protein: 0
-      }, {
-        name: 'Honeycomb',
-        calories: 408,
-        fat: 3.2,
-        carbs: 87,
-        protein: 6.5
-      }, {
-        name: 'Donut',
-        calories: 452,
-        fat: 25.0,
-        carbs: 51,
-        protein: 4.9
-      }, {
-        name: 'KitKat',
-        calories: 518,
-        fat: 26.0,
-        carbs: 65,
-        protein: 7
-      }];
+      var _this = this;
+
+      axios.get("api/productos").then(function (response) {
+        console.log(response.data);
+        _this.productos = response.data;
+      });
     },
     editItem: function editItem(item) {
       this.editedIndex = this.desserts.indexOf(item);
@@ -2288,21 +2230,21 @@ __webpack_require__.r(__webpack_exports__);
       this.closeDelete();
     },
     close: function close() {
-      var _this = this;
+      var _this2 = this;
 
       this.dialog = false;
       this.$nextTick(function () {
-        _this.editedItem = Object.assign({}, _this.defaultItem);
-        _this.editedIndex = -1;
+        _this2.editedItem = Object.assign({}, _this2.defaultItem);
+        _this2.editedIndex = -1;
       });
     },
     closeDelete: function closeDelete() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.dialogDelete = false;
       this.$nextTick(function () {
-        _this2.editedItem = Object.assign({}, _this2.defaultItem);
-        _this2.editedIndex = -1;
+        _this3.editedItem = Object.assign({}, _this3.defaultItem);
+        _this3.editedIndex = -1;
       });
     },
     save: function save() {
@@ -20710,7 +20652,7 @@ var render = function() {
         staticClass: "elevation-1",
         attrs: {
           headers: _vm.headers,
-          items: _vm.desserts,
+          items: _vm.productos,
           "sort-by": "calories"
         },
         scopedSlots: _vm._u([
