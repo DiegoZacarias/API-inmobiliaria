@@ -96,13 +96,28 @@ class ProductoController extends Controller
 
     private function storeImagenPrincipal($request, $producto)
     {
-        $image_name = str_slug($producto->id).'_principal.' . $request->file('imagen')->getClientOriginalExtension();
-        $producto->update([
-            'imagen' => $request->file('imagen')
-                                ->storeAs(
-                                    'productos', $image_name,'public'
-                                ),
-        ]);
+
+        try {
+            $imagen = \Imgur::upload($request['imagen']);
+            $imagePath = $imagen->link();
+            // dd($imagen->link());
+            
+            $producto->update([
+                'imagen' => $imagePath
+            ]);
+            
+        } catch (\Exception $e) {
+            return response()->json([
+                'Error' => $e
+            ]);
+        }
+        // $image_name = str_slug($producto->id).'_principal.' . $request->file('imagen')->getClientOriginalExtension();
+        // $producto->update([
+        //     'imagen' => $request->file('imagen')
+        //                         ->storeAs(
+        //                             'productos', $image_name,'public'
+        //                         ),
+        // ]);
 
         return true;
     }
