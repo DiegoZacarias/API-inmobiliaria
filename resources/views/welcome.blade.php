@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <link rel="stylesheet" href="/css/app.css">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -69,10 +71,14 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .active > a{
+                color: white;
+            }
+
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-top position-ref">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -92,11 +98,19 @@
 
            
         </div>
+            <div id="app">
+                <div class="container mx-auto">
+                    <aside class="links">
+                        <router-link to="/producto" class="nav-item" active-class="active">Productos</router-link>
+                        <router-link to="/panel" class="nav-item" active-class="active">Panel</router-link>
+                    </aside>
 
-         <div id="app">
-               <router-view></router-view>
+                    <div class="primary" style="margin-top: 4rem;">
+                        <router-view></router-view>
+                    </div>
+
+                </div>
             </div>
-            
 
         <script src="/js/app.js"></script>
     </body>

@@ -19,6 +19,6 @@ class ProductoController extends Controller
     {
     		$productos = $this->producto->where('visible', true)->get();
     		// dd($productos);
-    		return new ProductoCollection($productos);
+            return new ProductoCollection($productos);
     }
 }

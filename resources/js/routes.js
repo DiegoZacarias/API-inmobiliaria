@@ -1,12 +1,18 @@
 import Panel from './components/Panel';
+import Producto from './components/Producto';
 
 export default {
 	mode: 'history',
 
 	routes: [
 			{
-				path: '/',
+				path: '/panel',
 				component: Panel
+			},
+
+			{
+				path: '/producto',
+				component: Producto
 			},
 
 	]
