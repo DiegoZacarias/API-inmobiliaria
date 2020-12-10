@@ -28,7 +28,7 @@ class CreateProductosTable extends Migration
             $table->bigInteger('negocio_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('set null');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->foreign('negocio_id')->references('id')->on('negocios');
         });
     }

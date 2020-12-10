@@ -18,7 +18,6 @@ class ProductoController extends Controller
     public function listarProductosVisibles()
     {
     		$productos = $this->producto->where('visible', true)->get();
-    		// dd($productos);
-    		return new ProductoCollection($productos);
+    		return ProductoCollection::make($productos);
     }
 }
