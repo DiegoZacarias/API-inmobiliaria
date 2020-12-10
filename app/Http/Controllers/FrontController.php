@@ -10,10 +10,7 @@ class FrontController extends Controller
     public function getRouteCollection()
     {
     		$routeCollection = Route::getRoutes();
-
-    		foreach ($routeCollection as $route) {
-    			dd($route->uri);
-    		}
     		// dd($routeCollection);
+    		return view('routes', compact('routeCollection'));
     }
 }

@@ -8,7 +8,7 @@
                 <div class="links">
                     <a href="{{ route('instalacion') }}">Instalación</a>
                     <a href="#">Documentación</a>
-                    <a href="#">URLS</a>
+                    <a href="{{ route('routes') }}">URLS</a>
                 </div>
             </div>
 @endsection
