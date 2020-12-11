@@ -20,24 +20,39 @@ class ProductoTest extends TestCase
             $this->withoutExceptionHandling();
             $response = $this->json('GET',route('front.productos.listar'));
             $response->assertStatus(200)
-                    // ->assertJson([
-                    //     [     
-                    //           'id' => $productos[0]->id, 
-                    //           'nombre' => $productos[0]->nombre,
-                    //           'descripcion' => $productos[0]->descripcion,
-                    //           'direccion' => $productos[0]->direccion,
-                    //           'banos' => $productos[0]->banos,
-                    //           'habitaciones' => $productos[0]->habitaciones 
-                    //     ],    
-                    //     [     
-                    //           'id' => $productos[1]->id, 
-                    //           'nombre' => $productos[1]->nombre,
-                    //           'descripcion' => $productos[1]->descripcion,
-                    //           'direccion' => $productos[1]->direccion,
-                    //           'banos' => $productos[1]->banos,
-                    //           'habitaciones' => $productos[1]->habitaciones
-                    //     ]
-                    // ])
+                    ->assertJson([
+                        'data' => [
+                            [     
+                                  'id' => $productos[0]->id, 
+                                  'nombre' => $productos[0]->nombre,
+                                  'descripcion' => $productos[0]->descripcion,
+                                  'direccion' => $productos[0]->direccion,
+                                  'banos' => $productos[0]->banos,
+                                  'habitaciones' => $productos[0]->habitaciones 
+                            ],    
+                            [     
+                                  'id' => $productos[1]->id, 
+                                  'nombre' => $productos[1]->nombre,
+                                  'descripcion' => $productos[1]->descripcion,
+                                  'direccion' => $productos[1]->direccion,
+                                  'banos' => $productos[1]->banos,
+                                  'habitaciones' => $productos[1]->habitaciones
+                            ]
+                        ]
+                    ])
                     ->assertJsonCount(2, $key = null);  
+    }
+
+    /** @test */
+    public function se_puede_mostrar_solo_un_producto()
+    {
+            $producto = factory(Producto::class)->create(['visible' => true]);
+            $this->withoutExceptionHandling();
+            $response = $this->json('GET', route('front.productos.mostrar', $producto->id));
+
+            $response->assertStatus(200)
+                    ->assertJson([
+                        'id' => $producto->id
+                    ]);
     }
 }

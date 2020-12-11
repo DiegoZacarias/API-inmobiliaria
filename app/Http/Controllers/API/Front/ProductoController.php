@@ -20,4 +20,13 @@ class ProductoController extends Controller
     		$productos = $this->producto->where('visible', true)->get();
     		return ProductoCollection::make($productos);
     }
+
+    public function mostrarProductoIndividual(Producto $producto)
+    {
+    		if (!$producto->visible) {
+    			throw new \Exception('Este producto no esta disponible actualmente.');
+    		}
+
+	    		return response()->json(ProductoModel::make($producto));
+    }
 }

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 // FRONT
 Route::get('productos/listar', [FrontProductoController::class, 'listarProductosVisibles'])->name('front.productos.listar');
+Route::get('producto/mostrar/{producto}', [FrontProductoController::class, 'mostrarProductoIndividual'])->name('front.productos.mostrar');
 // FIN FRONT
 
 // PANEL
