@@ -17,6 +17,7 @@ $factory->define(Producto::class, function (Faker $faker) {
     		'habitaciones' => $faker->numberBetween($min = 1, $max = 5),
     		'estacionamiento' => $faker->numberBetween($min = 1, $max = 5),
         'categoria_id' => $categoria->id,
-        'negocio_id' => $negocio->id
+        'negocio_id' => $negocio->id,
+        'precio' => $faker->numberBetween($min = 10000, $max = 90000)
     ];
 });
